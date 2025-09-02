@@ -1,0 +1,26 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Plans
+*.tfplan
+tfplan
+
+# Vars (may contain secrets)
+# NOTE: 가이드 목적상 tfvars를 커밋 허용합니다. 실제 운영에서는 주의하세요.
+
+# OS/Editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Note: keep .terraform.lock.hcl committed
+

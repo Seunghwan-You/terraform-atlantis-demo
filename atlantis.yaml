@@ -1,0 +1,25 @@
+version: 3
+projects:
+  - name: dev
+    dir: environments/dev
+    autoplan:
+      when_modified: ["../modules/**/*.tf", "**/*.tf"]
+      enabled: true
+    workflow: terraform
+  - name: prod
+    dir: environments/prod
+    autoplan:
+      when_modified: ["../modules/**/*.tf", "**/*.tf"]
+      enabled: true
+    workflow: terraform
+workflows:
+  terraform:
+    plan:
+      steps:
+        - init
+        - plan
+    apply:
+      steps:
+        - apply
+
+
