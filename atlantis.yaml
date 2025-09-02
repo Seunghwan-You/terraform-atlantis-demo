@@ -3,12 +3,12 @@ projects:
   - name: dev
     dir: environments/dev
     autoplan:
-      when_modified: ["../modules/**/*.tf", "**/*.tf"]
+      when_modified: ["environments/dev/**/*.tf", "modules/**/*.tf"]
       enabled: true
   - name: prod
     dir: environments/prod
     autoplan:
-      when_modified: ["../modules/**/*.tf", "**/*.tf"]
+      when_modified: ["environments/prod/**/*.tf", "modules/**/*.tf"]
       enabled: true
     
 
