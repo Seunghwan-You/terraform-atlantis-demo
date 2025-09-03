@@ -3,12 +3,12 @@ projects:
   - name: dev
     dir: environments/dev
     autoplan:
-      when_modified: ["environments/dev/**", "modules/**", "atlantis.yaml"]
+      when_modified: ["environments/dev/**/*.tf", "environments/dev/**/*.tfvars"]
       enabled: true
   - name: prod
     dir: environments/prod
     autoplan:
-      when_modified: ["environments/prod/**", "modules/**", "atlantis.yaml"]
+      when_modified: ["environments/prod/**/*.tf", "environments/prod/**/*.tfvars"]
       enabled: true
     
 
