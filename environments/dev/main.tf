@@ -46,8 +46,8 @@ locals {
 #   admin_password      = var.admin_password
 # }
 
-output "public_ip" {
-  value = module.vm.public_ip
-}
+# output "public_ip" {
+#   value = module.vm.public_ip
+# }
 
 
