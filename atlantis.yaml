@@ -9,8 +9,6 @@ projects:
     dir: environments/prod    
     autoplan:
       when_modified: ["**/*.tf", "**/*.tfvars", "../../modules/**/*.tf"]
-      enabled: true
-
-    
+      enabled: true   
 
 
