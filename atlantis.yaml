@@ -5,12 +5,12 @@ projects:
     apply_requirements: [approved]
     autoplan:
       when_modified: ["**/*.tf", "**/*.tfvars", "../../modules/**/*.tf"]      
-      enabled: true
+      enabled: true    
   - name: prod
     apply_requirements: [approved]
     dir: environments/prod    
     autoplan:
       when_modified: ["**/*.tf", "**/*.tfvars", "../../modules/**/*.tf"]
-      enabled: true   
+      enabled: true  
 
 
