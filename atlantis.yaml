@@ -3,13 +3,14 @@ projects:
   - name: dev
     dir: environments/dev
     autoplan:
-      when_modified: ["**"]
+      when_modified: ["environments/dev/**", "modules/**"]
       enabled: true
   - name: prod
     dir: environments/prod
     autoplan:
-      when_modified: ["**"]  
+      when_modified: ["environments/prod/**", "modules/**"]
       enabled: true
+
     
 
 
