@@ -24,18 +24,18 @@ locals {
   location            = var.location
 }
 
-resource "azurerm_resource_group" "this" {
-  name     = local.resource_group_name
-  location = local.location
-}
+# resource "azurerm_resource_group" "this" {
+#   name     = local.resource_group_name
+#   location = local.location
+# }
 
-module "networking" {
-  source              = "../../modules/networking"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = local.location
-  vnet_cidr           = var.vnet_cidr
-  subnet_cidr         = var.subnet_cidr
-}
+# module "networking" {
+#   source              = "../../modules/networking"
+#   resource_group_name = azurerm_resource_group.this.name
+#   location            = local.location
+#   vnet_cidr           = var.vnet_cidr
+#   subnet_cidr         = var.subnet_cidr
+# }
 
 # module "vm" {
 #   source              = "../../modules/vm"
