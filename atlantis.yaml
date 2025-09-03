@@ -1,14 +1,12 @@
 version: 3
 projects:
   - name: dev
-    dir: environments/dev
-    apply_requirements: [approved]
+    dir: environments/dev    
     autoplan:
       when_modified: ["**/*.tf", "**/*.tfvars", "../../modules/**/*.tf"]
       enabled: true
   - name: prod
-    dir: environments/prod
-    apply_requirements: [approved]
+    dir: environments/prod    
     autoplan:
       when_modified: ["**/*.tf", "**/*.tfvars", "../../modules/**/*.tf"]
       enabled: true
