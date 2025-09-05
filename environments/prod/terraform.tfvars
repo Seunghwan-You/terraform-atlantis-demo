@@ -1,3 +1,4 @@
 resource_group_name = "rg-atlantis-prod"
 location            = "koreacentral"
-admin_password      = "" # 데모용. 실제로는 환경변수/키볼트/Atlantis var로 주입하세요.
+# 실제 사용 시 '<ADMIN_PASSWORD>'를 실제 비밀번호로 변경하거나 Atlantis에서 변수로 주입하세요.
+admin_password      = "<ADMIN_PASSWORD>"
