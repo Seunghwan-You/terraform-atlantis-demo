@@ -38,6 +38,6 @@ atlantis.yaml: 프로젝트/워크플로우 설정
 
 ## 참고
 - 기본 리전: `koreacentral`
-- CIDR는 dev/prod에 서로 다르게 지정됨
+- CIDR는 dev/prod에 서로 다르게 지정됨.
 
 
