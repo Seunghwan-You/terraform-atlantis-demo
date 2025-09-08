@@ -13,24 +13,25 @@ atlantis.yaml: 프로젝트/워크플로우 설정
 ```
 
 ## 주의 사항
-- SSH 키 대신 비밀번호를 사용하도록 기본 설정됨
  - 첫 사용 전 `environments/dev|prod/main.tf`의 backend 값 중
    `resource_group_name`/`storage_account_name` 플레이스홀더를 실제 값으로 교체하세요.
- - `environments/dev|prod/terraform.tfvars`의 `admin_password`는 `<ADMIN_PASSWORD>` 플레이스홀더입니다. 실제 값으로 교체하거나 Atlantis 변수로 주입하세요.
+ - `environments/dev|prod/terraform.tfvars`의 `admin_password`는 `<ADMIN_PASSWORD>` 플레이스홀더입니다. 실제 값으로 교체하세요.
 
 ## 보안/레포지토리 주의
 - 이 가이드는 실습 편의를 위해 `environments/dev|prod/terraform.tfvars`를 레포지토리에 포함합니다.
-- 민감정보(예: 비밀번호) 노출 위험이 있으니 공개(Public) 저장소로 실습하지 마세요. 반드시 Private 저장소를 사용하세요.
+- **GitHub 무료 계정 사용자의 경우**: Private 저장소에서는 브랜치 보호 규칙 제한으로 Atlantis 테스트가 어려울 수 있습니다. 
+- **Public 저장소 사용 시 필수 조치**:
+  - `terraform.tfvars` 파일에서 `admin_password` 값을 제거하고 `<ADMIN_PASSWORD>` 플레이스홀더로 유지
+  - Atlantis 서버에서 환경변수 `TF_VAR_admin_password`로 실제 비밀번호 주입
+  - 또는 Azure Key Vault 연동으로 비밀값 관리
+- **Private 저장소 사용 가능한 경우**: 민감정보 보호를 위해 Private 저장소 권장
 - 운영 환경에서는 `terraform.tfvars`에 비밀값을 커밋하지 말고, Atlantis 서버 측 변수/환경변수, 워크스페이스 변수, 또는 Key Vault/CI Secret으로 주입하세요.
- - 실습 예제의 `admin_password` 값은 `<ADMIN_PASSWORD>` 플레이스홀더입니다. 실습 시 실제 값으로 바꾸거나 Atlantis에서 변수로 주입하세요.
 
 ## Atlantis 사용 개요
 - PR 생성 시 자동으로 `init/plan` 실행 (atlantis.yaml의 `autoplan`)
 - 승인 후 `atlantis apply`로 반영
 
 백엔드가 설정되어 있으므로, Atlantis 서버에서 Azure 권한(Managed Identity 또는 `ARM_*` env)과 tfstate 스토리지가 접근 가능한 네트워크가 필요합니다.
-
-필요시 서버 측 Atlantis에서 Azure 자격증명(Managed Identity 또는 `ARM_*` env)을 설정하세요.
 
 ## 진행 방법
 - 환경별 `main.tf`의 리소스/모듈 블록은 주석 처리되어 있습니다. 가이드를 따라 단계별로 주석을 해제하고 Pull Request를 만들면 Atlantis가 `plan`을 수행합니다. 승인 후 `atlantis apply`로 실제 배포를 진행하세요.
