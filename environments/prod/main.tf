@@ -7,8 +7,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "<TFSTATE_RESOURCE_GROUP_NAME>"            # 예: rg-terraform-state
-    storage_account_name = "<TFSTATE_STORAGE_ACCOUNT_NAME>" # 예: satfstate12345678
+    resource_group_name  = "yooshwan-RG"            # 예: rg-terraform-state
+    storage_account_name = "satfstatebrdc3iq1" # 예: satfstate12345678
     container_name       = "tfstate"
     key                  = "prod.tfstate"
     use_azuread_auth     = true
