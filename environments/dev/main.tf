@@ -7,8 +7,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "yooshwan-RG"            # 예: rg-terraform-state
-    storage_account_name = "satfstatebrdc3iq1" # 예: satfstate12345678
+    resource_group_name  = "<TFSTATE_RESOURCE_GROUP_NAME>"  # 예: rg-terraform-state
+    storage_account_name = "<TFSTATE_STORAGE_ACCOUNT_NAME>" # 예: satfstate12345678
     container_name       = "tfstate"
     key                  = "dev.tfstate"
     use_azuread_auth     = true
@@ -28,25 +28,26 @@ resource "azurerm_resource_group" "this" {
   name     = local.resource_group_name
   location = local.location
 }
-module "networking" {
-  source              = "../../modules/networking"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = local.location
-  vnet_cidr           = var.vnet_cidr
-  subnet_cidr         = var.subnet_cidr
-}
 
-module "vm" {
-  source              = "../../modules/vm"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = local.location
-  subnet_id           = module.networking.subnet_id
-  admin_username      = var.admin_username
-  admin_password      = var.admin_password
-}
+# module "networking" {
+#   source              = "../../modules/networking"
+#   resource_group_name = azurerm_resource_group.this.name
+#   location            = local.location
+#   vnet_cidr           = var.vnet_cidr
+#   subnet_cidr         = var.subnet_cidr
+# }
 
-output "public_ip" {
-  value = module.vm.public_ip
-}
+# module "vm" {
+#   source              = "../../modules/vm"
+#   resource_group_name = azurerm_resource_group.this.name
+#   location            = local.location
+#   subnet_id           = module.networking.subnet_id
+#   admin_username      = var.admin_username
+#   admin_password      = var.admin_password
+# }
+
+# output "public_ip" {
+#   value = module.vm.public_ip
+# }
 
 
