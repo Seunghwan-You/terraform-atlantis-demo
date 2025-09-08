@@ -28,26 +28,26 @@ resource "azurerm_resource_group" "this" {
   name     = local.resource_group_name
   location = local.location
 }
+module "networking" {
+  source              = "../../modules/networking"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = local.location
+  vnet_cidr           = var.vnet_cidr
+  subnet_cidr         = var.subnet_cidr
+}
 
-# module "networking" {
-#   source              = "../../modules/networking"
-#   resource_group_name = azurerm_resource_group.this.name
-#   location            = local.location
-#   vnet_cidr           = var.vnet_cidr
-#   subnet_cidr         = var.subnet_cidr
-# }
+module "vm" {
+  source              = "../../modules/vm"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = local.location
+  subnet_id           = module.networking.subnet_id
+  admin_username      = var.admin_username
+  admin_password      = var.admin_password
+  tags                = var.tags
+}
 
-# module "vm" {
-#   source              = "../../modules/vm"
-#   resource_group_name = azurerm_resource_group.this.name
-#   location            = local.location
-#   subnet_id           = module.networking.subnet_id
-#   admin_username      = var.admin_username
-#   admin_password      = var.admin_password
-# }
-
-# output "public_ip" {
-#   value = module.vm.public_ip
-# }
+output "public_ip" {
+  value = module.vm.public_ip
+}
 
 

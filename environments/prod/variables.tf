@@ -33,4 +33,14 @@ variable "admin_password" {
   sensitive   = true
 }
 
+variable "tags" {
+  description = "Common tags for all resources"
+  type        = map(string)
+  default = {
+    Environment = "prod"
+    ManagedBy   = "Terraform"
+    Project     = "Atlantis-GitOps"
+  }
+}
+
 

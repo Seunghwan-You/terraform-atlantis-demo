@@ -24,4 +24,10 @@ variable "admin_password" {
   sensitive   = true
 }
 
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}
+
 

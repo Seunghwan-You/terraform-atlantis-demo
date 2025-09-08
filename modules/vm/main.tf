@@ -4,12 +4,14 @@ resource "azurerm_public_ip" "this" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
+  tags                = var.tags
 }
 
 resource "azurerm_network_interface" "this" {
   name                = "nic-atlantis"
   location            = var.location
   resource_group_name = var.resource_group_name
+  tags                = var.tags
 
   ip_configuration {
     name                          = "ipconfig1"
@@ -28,6 +30,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   network_interface_ids           = [azurerm_network_interface.this.id]
   disable_password_authentication = false
   admin_password                  = var.admin_password
+  tags                            = var.tags
 
   # SSH 키 대신 비밀번호 인증 사용
 

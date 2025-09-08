@@ -24,10 +24,10 @@ locals {
   location            = var.location
 }
 
-resource "azurerm_resource_group" "this" {
-  name     = local.resource_group_name
-  location = local.location
-}
+# resource "azurerm_resource_group" "this" {
+#   name     = local.resource_group_name
+#   location = local.location
+# }
 
 # module "networking" {
 #   source              = "../../modules/networking"
@@ -44,6 +44,7 @@ resource "azurerm_resource_group" "this" {
 #   subnet_id           = module.networking.subnet_id
 #   admin_username      = var.admin_username
 #   admin_password      = var.admin_password
+#   tags                = var.tags
 # }
 
 # output "public_ip" {
