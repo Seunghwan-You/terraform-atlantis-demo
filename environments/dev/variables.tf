@@ -18,7 +18,7 @@ variable "vnet_cidr" {
 variable "subnet_cidr" {
   description = "CIDR for Subnet"
   type        = string
-  default     = "10.10.1.0/24"
+  default     = "10.10.2.0/24"
 }
 
 variable "admin_username" {
