@@ -7,7 +7,7 @@ tags = {
   Environment = "development"
   ManagedBy   = "Terraform-Atlantis"
   Project     = "GitOps-Demo"
-  Owner       = "Development-team"
+  Owner       = "Development-Team"
 }
 
 
